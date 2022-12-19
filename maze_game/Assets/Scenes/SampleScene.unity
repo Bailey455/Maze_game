@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodePrefab: {fileID: 903297519597842867, guid: 79db2ecbe52332b4c9aea55c15219f4e, type: 3}
-  mazeSize: {x: 10, y: 10}
+  mazeSize: {x: 15, y: 15}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

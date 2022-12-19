@@ -236,11 +236,12 @@ public class MazeGenerator : MonoBehaviour
                 currentPath.Add(chosenNode);
                 chosenNode.setState(NodeState.Current);
             }
+
             else
             {
                 completedNodes.Add(currentPath[currentPath.Count - 1]);
 
-                currentPath[currentPath.Count - 1].setState(NodeState.Completed);
+                //currentPath[currentPath.Count - 1].setState(NodeState.Completed);
                 currentPath.RemoveAt(currentPath.Count - 1);
             }
 
