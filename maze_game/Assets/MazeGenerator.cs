@@ -35,5 +35,13 @@ public class MazeGenerator : MonoBehaviour
         //choose starting node
         currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
         currentPath[0].setState(NodeState.Current);
+
+        /*while(completedNodes.Count < nodes.Count)
+        {
+            //check nodes next to current node
+            List<int> possibleNodes = new List<int>();
+            List<int> possibleDirections = new List<int>();
+        }
+        */
     }
 }
