@@ -28,5 +28,12 @@ public class MazeGenerator : MonoBehaviour
                 yield return null;
             }
         }
+
+        List<MazeNode> currentPath = new List<MazeNode>();
+        List<MazeNode> completedNodes = new List<MazeNode>();
+
+        //choose starting node
+        currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
+        currentPath[0].setState(NodeState.Current);
     }
 }
