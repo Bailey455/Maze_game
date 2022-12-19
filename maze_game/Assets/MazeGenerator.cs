@@ -9,11 +9,11 @@ public class MazeGenerator : MonoBehaviour
 
     public void Start()
     {
-        //StartCoroutine(GenerateMaze(mazeSize));
-        GenerateMazeInstant(mazeSize);
+        StartCoroutine(GenerateMaze(mazeSize));
+        //GenerateMazeInstant(mazeSize);
     }
 
-    void GenerateMazeInstant(Vector2Int size)
+    /*void GenerateMazeInstant(Vector2Int size)
     {
         List<MazeNode> nodes = new List<MazeNode>();
 
@@ -33,8 +33,10 @@ public class MazeGenerator : MonoBehaviour
         List<MazeNode> completedNodes = new List<MazeNode>();
 
         //choose starting node
-        currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
+        //currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
         //to start in center
+        currentPath.Add(nodes[nodes.Count/2]);
+
         //currentPath.add(nodes[nodes.Count/2]);
 
         while (completedNodes.Count < nodes.Count)
@@ -123,6 +125,8 @@ public class MazeGenerator : MonoBehaviour
                 currentPath.RemoveAt(currentPath.Count - 1);
             }
         }
+    }
+        */
 
     IEnumerator GenerateMaze(Vector2Int size)
     {
@@ -145,10 +149,12 @@ public class MazeGenerator : MonoBehaviour
         List<MazeNode> completedNodes = new List<MazeNode>();
 
         //choose starting node
-        currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
+        //centered in 10 x 10
+            //int halfWayTen = (int)(nodes.Count / 1.8);
+        currentPath.Add(nodes[nodes.Count / 2]);
         //to start in center
         //currentPath.add(nodes[nodes.Count/2]);
-        currentPath[0].setState(NodeState.Current);
+        currentPath[0].setState(NodeState.Start);
 
         while (completedNodes.Count < nodes.Count)
         {
@@ -240,6 +246,6 @@ public class MazeGenerator : MonoBehaviour
 
             yield return new WaitForSeconds(0.05f);
         }
-    }
+        
     }
 }
