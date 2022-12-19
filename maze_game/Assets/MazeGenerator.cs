@@ -2,27 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Maze_generator : MonoBehaviour
+public class MazeGenerator : MonoBehaviour
 {
-    [SerializeField] MazeNode nodePrefab; 
+    [SerializeField] MazeNode nodePrefab;
     [SerializeField] Vector2Int mazeSize;
 
-    private void Start()
-    { 
-        startCoroutine(GenerateMaze(mazeSize));
+    public void Start()
+    {
+        StartCoroutine(GenerateMaze(mazeSize));
     }
 
     IEnumerator GenerateMaze(Vector2Int size)
     {
         List<MazeNode> nodes = new List<MazeNode>();
 
-        //create notes
-        for (int x = 0; x < size; x++)
+        //create maze
+        for(int x = 0; x < size.x; x++)
         {
-            for(int y = 0; y < size; y++)
+            for(int y = 0; y < size.y; y++)
             {
-                Vector3 nodePos = new Vector3(x - (size.x/2f), 0, y - (size.y/2f));
-                MazeNode newNode = Instantiate(modePrefab, nodePos, Quaternion.identity, transform);
+                Vector3 nodePos = new Vector3((x - size.x/2f), 0, y - (size.y / 2f));
+                MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
                 nodes.Add(newNode);
 
                 yield return null;

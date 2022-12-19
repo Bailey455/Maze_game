@@ -4,12 +4,12 @@ using UnityEngine;
 
 public enum NodeState
 {
-    Available, 
-    Current, 
+    Available,
+    Current,
     Completed
 }
 
-public class Maze_node : MonoBehaviour
+public class MazeNode : MonoBehaviour
 {
     [SerializeField] GameObject[] walls;
     [SerializeField] MeshRenderer floor;
