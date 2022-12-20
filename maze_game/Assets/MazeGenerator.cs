@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
+    public GameObject Player;
     [SerializeField] MazeNode nodePrefab;
     [SerializeField] Vector2Int mazeSize;
 
@@ -23,20 +24,24 @@ public class MazeGenerator : MonoBehaviour
             for(int y = 0; y < size.y; y++)
             {
                 Vector3 nodePos = new Vector3((x - size.x/2f), 0, y - (size.y / 2f));
+                Player.transform.position = nodePos; //remove later
                 MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
                 nodes.Add(newNode);
-
             }
         }
 
         List<MazeNode> currentPath = new List<MazeNode>();
         List<MazeNode> completedNodes = new List<MazeNode>();
 
-        //choose starting node
-        //centered in 10 x 10
-            //int halfWayTen = (int)(nodes.Count / 1.8);
+        
+        /*centered in 10 x 10
+            int halfWayTen = (int)(nodes.Count / 1.8);*/
+
+        //choose starting node in center off odd number dimensions
         currentPath.Add(nodes[nodes.Count / 2]);
-        //to start in center
+
+        //try tp get player to spawn at the starting node
+        
         //currentPath.add(nodes[nodes.Count/2]);
         currentPath[0].setState(NodeState.Start);
 
