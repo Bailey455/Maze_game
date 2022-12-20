@@ -9,11 +9,11 @@ public class MazeGenerator : MonoBehaviour
 
     public void Start()
     {
-        StartCoroutine(GenerateMaze(mazeSize));
-        //GenerateMazeInstant(mazeSize);
+        //StartCoroutine(GenerateMaze(mazeSize));
+        GenerateMazeInstant(mazeSize);
     }
 
-    /*void GenerateMazeInstant(Vector2Int size)
+    void GenerateMazeInstant(Vector2Int size)
     {
         List<MazeNode> nodes = new List<MazeNode>();
 
@@ -33,11 +33,12 @@ public class MazeGenerator : MonoBehaviour
         List<MazeNode> completedNodes = new List<MazeNode>();
 
         //choose starting node
-        //currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
+        //centered in 10 x 10
+            //int halfWayTen = (int)(nodes.Count / 1.8);
+        currentPath.Add(nodes[nodes.Count / 2]);
         //to start in center
-        currentPath.Add(nodes[nodes.Count/2]);
-
         //currentPath.add(nodes[nodes.Count/2]);
+        currentPath[0].setState(NodeState.Start);
 
         while (completedNodes.Count < nodes.Count)
         {
@@ -117,16 +118,26 @@ public class MazeGenerator : MonoBehaviour
                 }
 
                 currentPath.Add(chosenNode);
+                chosenNode.setState(NodeState.Current);
             }
+
             else
             {
                 completedNodes.Add(currentPath[currentPath.Count - 1]);
+                //currentPath[currentPath.Count - 1].setState(NodeState.Completed);
 
                 currentPath.RemoveAt(currentPath.Count - 1);
             }
+
         }
+
+        MazeNode ending = nodes[Random.Range(0, nodes.Count - 1)];
+        ending.setState(NodeState.End);
+        Debug.Log("Completed");
+        
     }
-        */
+    
+        
 
     IEnumerator GenerateMaze(Vector2Int size)
     {
@@ -240,13 +251,18 @@ public class MazeGenerator : MonoBehaviour
             else
             {
                 completedNodes.Add(currentPath[currentPath.Count - 1]);
-
                 //currentPath[currentPath.Count - 1].setState(NodeState.Completed);
+
                 currentPath.RemoveAt(currentPath.Count - 1);
             }
 
             yield return new WaitForSeconds(0.05f);
         }
+
+        MazeNode ending = nodes[Random.Range(0, nodes.Count - 1)];
+        ending.setState(NodeState.End);
+        Debug.Log("Completed");
         
     }
 }
+
