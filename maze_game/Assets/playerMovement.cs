@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float movementSpeed = 10.0f;
+    public float movementSpeed = 5.0f;
     public bool isSprinting = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void FixedUpdate()
     {
@@ -33,11 +28,11 @@ public class playerMovement : MonoBehaviour
         
         if(isSprinting == true)
         {
-            movementSpeed = 15.0f; 
+            movementSpeed = 7.0f; 
         }
         else
         {
-            movementSpeed = 10.0f;
+            movementSpeed = 7.0f;
         }
     }
 }
