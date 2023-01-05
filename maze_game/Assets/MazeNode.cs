@@ -8,6 +8,7 @@ public enum NodeState
     Current,
     Completed,
     Start,
+    PickUp,
     End
 }
 
@@ -38,7 +39,10 @@ public class MazeNode : MonoBehaviour
                 floor.material.color = Color.red;
                 break;
             case NodeState.End:
-                floor.material.color = Color.red;
+                floor.material.color = Color.green;
+                break;
+            case NodeState.PickUp:
+                floor.material.color = Color.black;
                 break;
         }
     }

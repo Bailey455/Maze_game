@@ -123,7 +123,7 @@ public class MazeGenerator : MonoBehaviour
                 }
 
                 currentPath.Add(chosenNode);
-                chosenNode.setState(NodeState.Current);
+                //chosenNode.setState(NodeState.Current);
             }
 
             else
@@ -137,12 +137,21 @@ public class MazeGenerator : MonoBehaviour
         }
 
         MazeNode ending = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode pickUp1 = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode pickUp2 = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode pickUp3 = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode pickUp4 = nodes[Random.Range(0, nodes.Count - 1)];
+
+        ending.setState(NodeState.End);
+        pickUp1.setState(NodeState.PickUp);
+        pickUp2.setState(NodeState.PickUp);
+        pickUp3.setState(NodeState.PickUp);
+        pickUp4.setState(NodeState.PickUp);
+
         ending.setState(NodeState.End);
         Debug.Log("Completed");
         
     }
-    
-        
 
     IEnumerator GenerateMaze(Vector2Int size)
     {
@@ -265,7 +274,18 @@ public class MazeGenerator : MonoBehaviour
         }
 
         MazeNode ending = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode pickUp1 = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode pickUp2 = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode pickUp3 = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode pickUp4 = nodes[Random.Range(0, nodes.Count - 1)];
+
         ending.setState(NodeState.End);
+        pickUp1.setState(NodeState.PickUp);
+        pickUp2.setState(NodeState.PickUp);
+        pickUp3.setState(NodeState.PickUp);
+        pickUp4.setState(NodeState.PickUp);
+
+
         Debug.Log("Completed");
         
     }

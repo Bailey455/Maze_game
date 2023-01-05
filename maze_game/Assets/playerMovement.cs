@@ -28,11 +28,11 @@ public class playerMovement : MonoBehaviour
         
         if(isSprinting == true)
         {
-            movementSpeed = 7.0f; 
+            movementSpeed = 3.0f; 
         }
         else
         {
-            movementSpeed = 7.0f;
+            movementSpeed = 3.0f;
         }
     }
 }
