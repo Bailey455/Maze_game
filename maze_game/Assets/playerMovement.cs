@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float movementSpeed = 10.0f;
+    public float movementSpeed = 100.0f;
     public bool isSprinting = false;
+
+    private Rigidbody rb;
+
+    public void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
 
     public void FixedUpdate()
     {
@@ -16,6 +23,9 @@ public class playerMovement : MonoBehaviour
         movementDirection.Normalize();
 
         transform.Translate(movementDirection * Time.deltaTime * movementSpeed);
+
+        //works for left to right movement but not up and down
+        //rb.MovePosition(transform.position + movementDirection * movementSpeed * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -34,5 +44,6 @@ public class playerMovement : MonoBehaviour
         {
             movementSpeed = 3.0f;
         }
+        
     }
 }
