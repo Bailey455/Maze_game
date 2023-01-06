@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float movementSpeed = 5.0f;
+    public float movementSpeed = 10.0f;
     public bool isSprinting = false;
 
     public void FixedUpdate()
