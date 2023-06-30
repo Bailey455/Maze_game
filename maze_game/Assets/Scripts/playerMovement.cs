@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float movementSpeed = 75.0f;
+    public float movementSpeed = 0.0f;
     public bool isSprinting = false;
 
     private Rigidbody rb;
+    private Animator animator;
 
     public void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     public void FixedUpdate()
@@ -22,11 +24,16 @@ public class playerMovement : MonoBehaviour
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         movementDirection.Normalize();
 
-        transform.Translate(movementDirection * Time.deltaTime * movementSpeed);
+        transform.Translate(movementDirection * Time.deltaTime * movementSpeed, Space.World);
 
-       
+        animator.SetFloat("speed", movementSpeed);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (movementDirection != Vector3.zero)
+        {
+            transform.forward = movementDirection;
+        }
+
+        /*if (Input.GetKey(KeyCode.LeftShift))
         {
             isSprinting = true;
         }
@@ -43,6 +50,7 @@ public class playerMovement : MonoBehaviour
         {
             movementSpeed = 3.0f;
         }
+        */
         
     }
 }
