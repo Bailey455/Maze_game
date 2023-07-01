@@ -26,23 +26,11 @@ public class MazeNode : MonoBehaviour
     {
         switch(state)
         {
-            case NodeState.Available:
-                floor.material.color = Color.white;
-                break;
-            case NodeState.Current:
-                floor.material.color = Color.yellow;
-                break;
-            case NodeState.Completed:
-                floor.material.color = Color.blue;
-                break;
-            case NodeState.Start:
+            case NodeState.End:
                 floor.material.color = Color.red;
                 break;
-            case NodeState.End:
-                floor.material.color = Color.green;
-                break;
             case NodeState.PickUp:
-                floor.material.color = Color.black;
+                floor.material.color = Color.yellow;
                 break;
         }
     }

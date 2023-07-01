@@ -45,7 +45,7 @@ public class MazeGenerator : MonoBehaviour
         //try tp get player to spawn at the starting node
         
         //currentPath.add(nodes[nodes.Count/2]);
-        currentPath[0].setState(NodeState.Start);
+        //currentPath[0].setState(NodeState.Start);
 
         while (completedNodes.Count < nodes.Count)
         {
@@ -138,20 +138,20 @@ public class MazeGenerator : MonoBehaviour
 
         }
 
-        MazeNode ending = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode ending = nodes[0];
         MazeNode pickUp1 = nodes[Random.Range(0, nodes.Count - 1)];
         MazeNode pickUp2 = nodes[Random.Range(0, nodes.Count - 1)];
         MazeNode pickUp3 = nodes[Random.Range(0, nodes.Count - 1)];
         MazeNode pickUp4 = nodes[Random.Range(0, nodes.Count - 1)];
 
         ending.setState(NodeState.End);
+        ending.RemoveWall(3);
         pickUp1.setState(NodeState.PickUp);
         pickUp2.setState(NodeState.PickUp);
         pickUp3.setState(NodeState.PickUp);
         pickUp4.setState(NodeState.PickUp);
-
         ending.setState(NodeState.End);
-        Debug.Log("Completed");
+        //Debug.Log("Completed");
         
     }
 
@@ -275,7 +275,7 @@ public class MazeGenerator : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        MazeNode ending = nodes[Random.Range(0, nodes.Count - 1)];
+        MazeNode ending = nodes[0]; 
         MazeNode pickUp1 = nodes[Random.Range(0, nodes.Count - 1)];
         MazeNode pickUp2 = nodes[Random.Range(0, nodes.Count - 1)];
         MazeNode pickUp3 = nodes[Random.Range(0, nodes.Count - 1)];
@@ -288,7 +288,7 @@ public class MazeGenerator : MonoBehaviour
         pickUp4.setState(NodeState.PickUp);
 
 
-        Debug.Log("Completed");
+        //Debug.Log("Completed");
         
     }
 }
