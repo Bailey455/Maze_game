@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class cameraFollow : MonoBehaviour
 {
-    public Transform followObj;
+    public Transform player;
     public Vector3 offset;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = followObj.position + offset;
+        transform.position = player.position + offset;
     }
 }

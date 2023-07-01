@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public static CharacterController controller;
-    private Vector3 playerVelocity;
+    public static Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 2.0f;
     private float jumpHeight = 20.0f;
