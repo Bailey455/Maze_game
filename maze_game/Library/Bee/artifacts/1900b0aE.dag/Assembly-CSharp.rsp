@@ -353,6 +353,7 @@
 "Assets/Scripts/MazeGenerator.cs"
 "Assets/Scripts/MazeNode.cs"
 "Assets/Scripts/playerMovement.cs"
+"Assets/Scripts/playMove.cs"
 -langversion:9.0
 
 /deterministic
