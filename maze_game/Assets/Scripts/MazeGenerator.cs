@@ -24,7 +24,9 @@ public class MazeGenerator : MonoBehaviour
             for(int y = 0; y < size.y; y++)
             {
                 Vector3 nodePos = new Vector3((x - size.x/2f), 0, y - (size.y / 2f));
+                playerMovement.controller.enabled = false;
                 Player.transform.position = nodePos; //remove later
+                playerMovement.controller.enabled = true;
                 MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
                 nodes.Add(newNode);
             }
