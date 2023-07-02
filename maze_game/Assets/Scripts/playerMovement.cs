@@ -6,11 +6,12 @@ public class playerMovement : MonoBehaviour
 {
     public static CharacterController controller;
     public static Vector3 playerVelocity;
-    private bool groundedPlayer;
+    private bool groundedPlayer = false;
     private float playerSpeed = 2.0f;
     //private float jumpHeight = 20.0f;
     private float gravityValue = -9.81f;
     private Animator animator;
+    private int keycount = 0;
 
 
     private void Start()
@@ -70,6 +71,17 @@ public class playerMovement : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "key")
+        {
+            keycount += 1;
+            print(keycount);
+            //other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+        }
     }
 }
 
