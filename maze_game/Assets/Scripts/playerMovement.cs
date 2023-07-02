@@ -8,7 +8,7 @@ public class playerMovement : MonoBehaviour
     public static Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 2.0f;
-    private float jumpHeight = 20.0f;
+    //private float jumpHeight = 20.0f;
     private float gravityValue = -9.81f;
     private Animator animator;
 
@@ -20,7 +20,7 @@ public class playerMovement : MonoBehaviour
 
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y <= 0)
@@ -34,7 +34,20 @@ public class playerMovement : MonoBehaviour
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
-            animator.SetFloat("speed", playerSpeed);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                print("Left shift down");
+                playerSpeed = 4.0f;
+                animator.SetFloat("speed", playerSpeed);
+            }
+            else
+            {
+                playerSpeed = 2.5f;
+                animator.SetFloat("speed", playerSpeed);
+            }
+
+            
+
         }
         else
         {
@@ -42,10 +55,18 @@ public class playerMovement : MonoBehaviour
         }
 
         // Changes the height position of the player.. FIGURE OUT LATER
-        if (Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
+        /*if (Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
+        */
+        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            animator.SetBool("hit", true);
+        }
+        animator.SetBool("hit", false);
+
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);

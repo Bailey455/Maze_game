@@ -7,6 +7,10 @@ public class MazeGenerator : MonoBehaviour
     public GameObject Player;
     [SerializeField] MazeNode nodePrefab;
     [SerializeField] Vector2Int mazeSize;
+    public GameObject key1;
+    public GameObject key2;
+    public GameObject key3;
+    public GameObject key4;
 
     public void Start()
     {
@@ -140,12 +144,19 @@ public class MazeGenerator : MonoBehaviour
 
         MazeNode ending = nodes[0];
         MazeNode pickUp1 = nodes[Random.Range(0, nodes.Count - 1)];
+        Vector3 key1Pos = pickUp1.transform.position;
+        key1.transform.position = key1Pos;
         MazeNode pickUp2 = nodes[Random.Range(0, nodes.Count - 1)];
+         Vector3 key2Pos = pickUp2.transform.position;
+        key2.transform.position = key2Pos;
         MazeNode pickUp3 = nodes[Random.Range(0, nodes.Count - 1)];
+         Vector3 key3Pos = pickUp3.transform.position;
+        key3.transform.position = key3Pos;
         MazeNode pickUp4 = nodes[Random.Range(0, nodes.Count - 1)];
+         Vector3 key4Pos = pickUp4.transform.position;
+        key4.transform.position = key4Pos;
 
         ending.setState(NodeState.End);
-        ending.RemoveWall(3);
         pickUp1.setState(NodeState.PickUp);
         pickUp2.setState(NodeState.PickUp);
         pickUp3.setState(NodeState.PickUp);
