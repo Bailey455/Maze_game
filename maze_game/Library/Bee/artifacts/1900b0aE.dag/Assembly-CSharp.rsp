@@ -352,6 +352,7 @@
 "Assets/Scripts/cameraFollow.cs"
 "Assets/Scripts/MazeGenerator.cs"
 "Assets/Scripts/MazeNode.cs"
+"Assets/Scripts/playerCam.cs"
 "Assets/Scripts/playerMovement.cs"
 "Assets/Scripts/playMove.cs"
 -langversion:9.0

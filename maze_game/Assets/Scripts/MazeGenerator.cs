@@ -5,6 +5,7 @@ using UnityEngine;
 public class MazeGenerator : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject playerDot;
     [SerializeField] MazeNode nodePrefab;
     [SerializeField] Vector2Int mazeSize;
     public GameObject key1;
@@ -32,6 +33,7 @@ public class MazeGenerator : MonoBehaviour
                 Vector3 nodePos = new Vector3((x - size.x/2f), 0, y - (size.y / 2f));
                 playerMovement.controller.enabled = false;
                 Player.transform.position = nodePos; //remove later
+                playerDot.transform.position = nodePos;
                 playerMovement.controller.enabled = true;
                 MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
                 nodes.Add(newNode);

@@ -7,6 +7,7 @@ public class playerMovement : MonoBehaviour
     public static CharacterController controller;
     public Camera playerCam;
     public Camera mapCam; 
+    public GameObject playerDot;
 
 
     public static Vector3 playerVelocity;
@@ -21,10 +22,10 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
-        controller = gameObject.AddComponent<CharacterController>();
+        controller = gameObject.GetComponent<CharacterController>();
         animator = gameObject.GetComponent<Animator>(); 
         mapCam.enabled = false;
-
+        playerDot.SetActive(false);
     }
 
     public void Update()
@@ -78,12 +79,14 @@ public class playerMovement : MonoBehaviour
             {
                 mapCam.enabled = false;
                 playerCam.enabled = true;
+                playerDot.SetActive(false);
                 isOverhead = false;   
             }
             else
             {
                 mapCam.enabled = true;
                 playerCam.enabled = false;
+                playerDot.SetActive(true);
                 isOverhead = true;
             }
         }            
