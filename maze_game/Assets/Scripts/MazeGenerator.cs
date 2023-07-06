@@ -11,11 +11,13 @@ public class MazeGenerator : MonoBehaviour
     public GameObject key2;
     public GameObject key3;
     public GameObject key4;
+    public GameObject mapCam;
 
     public void Start()
     {
         //StartCoroutine(GenerateMaze(mazeSize));
         GenerateMazeInstant(mazeSize);
+        mapCam.transform.position = new Vector3(-0.3f, mazeSize.y, -0.5f);
     }
 
     void GenerateMazeInstant(Vector2Int size)

@@ -5,6 +5,10 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public static CharacterController controller;
+    public Camera playerCam;
+    public Camera mapCam; 
+
+
     public static Vector3 playerVelocity;
     private bool groundedPlayer = false;
     private float playerSpeed = 2.0f;
@@ -12,12 +16,14 @@ public class playerMovement : MonoBehaviour
     private float gravityValue = -9.81f;
     private Animator animator;
     private int keycount = 0;
+    private bool isOverhead = false;
 
 
     private void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
         animator = gameObject.GetComponent<Animator>(); 
+        mapCam.enabled = false;
 
     }
 
@@ -37,7 +43,6 @@ public class playerMovement : MonoBehaviour
             gameObject.transform.forward = move;
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                print("Left shift down");
                 playerSpeed = 4.0f;
                 animator.SetFloat("speed", playerSpeed);
             }
@@ -61,16 +66,28 @@ public class playerMovement : MonoBehaviour
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
         */
-        
-        if (Input.GetKey(KeyCode.Space))
-        {
-            animator.SetBool("hit", true);
-        }
-        animator.SetBool("hit", false);
-
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        //to see overhead view of maze
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            showOverhead();
+            if (isOverhead)
+            {
+                mapCam.enabled = false;
+                playerCam.enabled = true;
+                isOverhead = false;   
+            }
+            else
+            {
+                mapCam.enabled = true;
+                playerCam.enabled = false;
+                isOverhead = true;
+            }
+        }            
+        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -82,6 +99,18 @@ public class playerMovement : MonoBehaviour
             //other.gameObject.SetActive(false);
             Destroy(other.gameObject);
         }
+    }
+
+    public void showOverhead()
+    {
+        mapCam.enabled = true;
+        playerCam.enabled = false;
+    }
+
+    public void showPlayer()
+    {
+        mapCam.enabled = false;
+        playerCam.enabled = true;
     }
 }
 
