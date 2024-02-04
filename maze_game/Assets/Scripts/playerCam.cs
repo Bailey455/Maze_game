@@ -20,7 +20,7 @@ public class playerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        camPos = transform.position;
+        camPos = transform.position; 
     }
 
     // Update is called once per frame

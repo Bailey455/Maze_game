@@ -25,7 +25,7 @@ public class playMove : MonoBehaviour
         var vInput = Input.GetAxis("Vertical");
 
         if (CharacterController.isGrounded)
-        {
+        { 
             moveVelocity = transform.forward * speed * vInput;
             turnVelocity = transform.up * rotationSpeed * hInput;
             if(Input.GetButtonDown("Space"))
